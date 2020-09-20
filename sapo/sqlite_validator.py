@@ -33,4 +33,3 @@ class SqliteValidator:
              return False
         return True
 
-

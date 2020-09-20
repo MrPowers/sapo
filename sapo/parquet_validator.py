@@ -8,11 +8,15 @@ class ParquetValidator:
         self.table = pq.read_table(path)
 
 
-    def contains_column(self, path, column_name, data_type = None):
+    def contains_column(self, path, column_name, data_type = None, nullable = None, metadata = None):
         col = next((i for i in self.table.schema if i.name == column_name), None)
         if not col:
             return False
         if data_type and col.type != data_type:
+            return False
+        if nullable and col.nullable != nullable:
+            return False
+        if metadata and col.metadata != metadata:
             return False
         return True
 

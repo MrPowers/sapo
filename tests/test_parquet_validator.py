@@ -12,6 +12,8 @@ def test_contains_column():
     p = ParquetValidator(filename)
     assert p.contains_column(filename, 'last_name') == True
     assert p.contains_column(filename, 'last_name', pa.string()) == True
+    assert p.contains_column(filename, 'last_name', pa.string(), True) == True
+    assert p.contains_column(filename, 'last_name', pa.string(), True, None) == True
     assert p.contains_column(filename, 'id', pa.int64()) == True
     assert p.contains_column(filename, 'boo') == False
 
