@@ -32,3 +32,5 @@ class SqliteValidator:
         if default_value and col[4] != default_value:
              return False
         return True
+
+

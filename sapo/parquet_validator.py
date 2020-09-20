@@ -1,0 +1,23 @@
+import pyarrow.parquet as pq
+import pyarrow as pa
+
+
+class ParquetValidator:
+    def __init__(self, path):
+        self.path = path
+        self.table = pq.read_table(path)
+
+
+    def contains_column(self, path, column_name, data_type = None):
+        col = next((i for i in self.table.schema if i.name == column_name), None)
+        if not col:
+            return False
+        if data_type and col.type != data_type:
+            return False
+        return True
+
+
+    def validate_schema(self, path, expected_schema):
+        True
+
+# def only_contains_columns():
