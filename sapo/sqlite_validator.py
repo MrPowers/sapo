@@ -1,4 +1,3 @@
-
 class SqliteValidator:
     def __init__(self, conn):
         self.conn = conn
@@ -14,7 +13,12 @@ class SqliteValidator:
         return list(map(lambda r: r[0], tables))
 
 
-    # def only_contains_tables(tables):
+    def contains_table(self, table_name):
+        return table_name in self.tables()
+
+
+    def only_contains_tables(self, table_names):
+        return sorted(self.tables()) == sorted(table_names)
 
 
     def contains_column(self, table_name, column_name, data_type = None, nullable = None, default_value = None):
