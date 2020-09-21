@@ -8,7 +8,7 @@ class ParquetValidator:
         self.table = pq.read_table(path)
 
 
-    def contains_column(self, path, column_name, data_type = None, nullable = None, metadata = None):
+    def contains_column(self, column_name, data_type = None, nullable = None, metadata = None):
         col = next((i for i in self.table.schema if i.name == column_name), None)
         if not col:
             return False
@@ -21,7 +21,7 @@ class ParquetValidator:
         return True
 
 
-    def validate_schema(self, path, expected_schema):
-        True
+    def validate_schema(self, expected_schema):
+        return self.table.schema.equals(expected_schema)
 
 # def only_contains_columns():

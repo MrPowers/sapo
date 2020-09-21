@@ -26,12 +26,38 @@ s.contains_column('players', 'last_name', 'text') # True
 
 ## Parquet schema validation
 
+Import the `ParquetValidator` and instantiate it with a path to a Parquet file.
 
+```python
+from sapo.parquet_validator import ParquetValidator
+
+s = ParquetValidator(path)
+```
+
+Make sure the Parquet file has a `last_name` string type column.
+
+```python
+import pyarrow as pa
+
+p = ParquetValidator(filename)
+p.contains_column('last_name', pa.string()) # True
+```
+
+Check the entire schema of a Parquet file.
+
+```python
+p = ParquetValidator(filename)
+expected_schema = pa.schema([
+    pa.field("id", pa.int64(), True),
+    pa.field("last_name", pa.string(), True),
+    pa.field("position", pa.string(), True)])
+p.validate_schema(expected_schema) # True
+```
 
 ## Terminology
 
+* Table
 * Column
 * Column name
-* Table
 * Schema
 
