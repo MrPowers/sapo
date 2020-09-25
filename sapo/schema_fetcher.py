@@ -14,3 +14,4 @@ def yaml_to_pyarrow_schema(path):
         for k, v in s['columns'].items():
             arr.append(pa.field(k, pyarrow_type(v['data_type']), v['nullable']))
     return pa.schema(arr)
+
