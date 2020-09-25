@@ -2,14 +2,14 @@ table_name: players
 
 columns:
   id:
-    - data_type: int64
-    - nullable: True
+    data_type: int64
+    nullable: True
 
   last_name:
-    - data_type: string
-    - nullable: True
+    data_type: string
+    nullable: True
 
   position:
-    - data_type: string
-    - nullable: True
+    data_type: string
+    nullable: True
 
