@@ -1,8 +1,10 @@
 import pytest
 import os
+import sqlite3
 
 from sapo.schema_fetcher import *
 from sapo.parquet_validator import ParquetValidator
+from sapo.sqlite_helpers import SqliteHelpers
 
 
 dirname = os.path.dirname(__file__)
@@ -40,3 +42,15 @@ def test_yaml_to_sqlite_schema():
             'team_name': {'data_type': 'text', 'nullable': True},
             'team_city': {'data_type': 'text', 'nullable': True}}}
     assert yaml_to_sqlite_schema(filename) == expected
+
+
+def test_yaml_to_sqlite_schema():
+    filename = os.path.join(dirname, './data/nfl.db')
+    conn = sqlite3.connect(filename)
+    s = SqliteHelpers(conn)
+    filename = os.path.join(dirname, './schemas/nfl_sqlite_schema.yml')
+    expected = yaml_to_sqlite_schema(filename)
+    print(expected)
+    print(s.schema())
+    assert s.schema_equals(expected) == True
+

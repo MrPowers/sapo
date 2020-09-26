@@ -23,3 +23,7 @@ class SqliteHelpers:
             res[table_name] = inner
         return res
 
+
+    def schema_equals(self, expected_schema):
+        return self.schema() == expected_schema
+

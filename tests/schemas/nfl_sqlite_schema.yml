@@ -1,25 +1,25 @@
 players:
   id:
-    data_type: integer
-    nullable: True
+    data_type: int
+    nullable:
 
   last_name:
     data_type: text
-    nullable: True
+    nullable:
 
   position:
     data_type: text
-    nullable: True
+    nullable:
 
 teams:
   id:
-    data_type: integer
-    nullable: True
+    data_type: int
+    nullable:
 
   team_name:
     data_type: text
-    nullable: True
+    nullable:
 
   team_city:
     data_type: text
-    nullable: True
+    nullable:

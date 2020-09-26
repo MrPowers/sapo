@@ -10,7 +10,7 @@ def create_nfl_database():
     c = conn.cursor()
 
     # create sqlite database tables
-    c.execute('''CREATE TABLE players (id int, last_name text, position int)''')
+    c.execute('''CREATE TABLE players (id int, last_name text, position text)''')
     c.execute('''CREATE TABLE teams (id int, team_name text, team_city text)''')
 
     # create DataFrames
