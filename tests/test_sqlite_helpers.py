@@ -26,3 +26,20 @@ def test_tables():
     assert s.tables() == ['players', 'teams']
     conn.close()
 
+
+def test_schema():
+    filename = os.path.join(dirname, './data/nfl.db')
+    conn = sqlite3.connect(filename)
+    s = SqliteHelpers(conn)
+    expected = {
+        'players': {
+            'id': {'data_type': 'int', 'nullable': None},
+            'last_name': {'data_type': 'text', 'nullable': None},
+            'position': {'data_type': 'int', 'nullable': None}},
+        'teams': {
+            'id': {'data_type': 'int', 'nullable': None},
+            'team_name': {'data_type': 'text', 'nullable': None},
+            'team_city': {'data_type': 'text', 'nullable': None}}}
+    assert s.schema() == expected
+    conn.close()
+

@@ -15,3 +15,10 @@ def yaml_to_pyarrow_schema(path):
             arr.append(pa.field(k, pyarrow_type(v['data_type']), v['nullable']))
     return pa.schema(arr)
 
+
+def yaml_to_sqlite_schema(path):
+    s = None
+    with open(path) as file:
+        s = yaml.load(file, Loader=yaml.FullLoader)
+    return s
+

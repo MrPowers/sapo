@@ -27,3 +27,16 @@ def test_validate_schema():
 
     assert p.validate_schema(expected_schema) == True
 
+
+def test_yaml_to_sqlite_schema():
+    filename = os.path.join(dirname, './schemas/nfl_sqlite_schema.yml')
+    expected = {
+        'players': {
+            'id': {'data_type': 'integer', 'nullable': True},
+            'last_name': {'data_type': 'text', 'nullable': True},
+            'position': {'data_type': 'text', 'nullable': True}},
+        'teams': {
+            'id': {'data_type': 'integer', 'nullable': True},
+            'team_name': {'data_type': 'text', 'nullable': True},
+            'team_city': {'data_type': 'text', 'nullable': True}}}
+    assert yaml_to_sqlite_schema(filename) == expected
