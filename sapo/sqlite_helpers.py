@@ -18,8 +18,8 @@ class SqliteHelpers:
         for table_name in self.tables():
             ts = self.table_schema(table_name)
             inner = {}
-            for row_index, column_name, data_type, unknown1, nullable, unknown2 in ts:
-                inner[column_name] = {'data_type': data_type, 'nullable': nullable}
+            for cid, column_name, data_type, notnull, dflt_value, pk in ts:
+                inner[column_name] = {'data_type': data_type, 'notnull': notnull}
             res[table_name] = inner
         return res
 

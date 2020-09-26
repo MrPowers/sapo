@@ -61,3 +61,14 @@ p.validate_schema(expected_schema) # True
 * Column name
 * Schema
 
+## sqlite columns
+
+Each column in a sqlite table has 6 properties:
+
+* `cid` (integer): column index
+* `name` (text): column name
+* `type` (text): column type
+* `notnull` (integer): has a NOT NULL constraint
+* `dflt_value` (text): DEFAULT value
+* `pk` (integer): is part of the PRIMARY KEY
+

@@ -33,13 +33,13 @@ def test_schema():
     s = SqliteHelpers(conn)
     expected = {
         'players': {
-            'id': {'data_type': 'int', 'nullable': None},
-            'last_name': {'data_type': 'text', 'nullable': None},
-            'position': {'data_type': 'text', 'nullable': None}},
+            'id': {'data_type': 'int', 'notnull': 0},
+            'last_name': {'data_type': 'text', 'notnull': 0},
+            'position': {'data_type': 'text', 'notnull': 0}},
         'teams': {
-            'id': {'data_type': 'int', 'nullable': None},
-            'team_name': {'data_type': 'text', 'nullable': None},
-            'team_city': {'data_type': 'text', 'nullable': None}}}
+            'id': {'data_type': 'int', 'notnull': 0},
+            'team_name': {'data_type': 'text', 'notnull': 0},
+            'team_city': {'data_type': 'text', 'notnull': 0}}}
     assert s.schema() == expected
     conn.close()
 
@@ -50,13 +50,13 @@ def test_schema_equals():
     s = SqliteHelpers(conn)
     expected = {
         'players': {
-            'id': {'data_type': 'int', 'nullable': None},
-            'last_name': {'data_type': 'text', 'nullable': None},
-            'position': {'data_type': 'text', 'nullable': None}},
+            'id': {'data_type': 'int', 'notnull': 0},
+            'last_name': {'data_type': 'text', 'notnull': 0},
+            'position': {'data_type': 'text', 'notnull': 0}},
         'teams': {
-            'id': {'data_type': 'int', 'nullable': None},
-            'team_name': {'data_type': 'text', 'nullable': None},
-            'team_city': {'data_type': 'text', 'nullable': None}}}
+            'id': {'data_type': 'int', 'notnull': 0},
+            'team_name': {'data_type': 'text', 'notnull': 0},
+            'team_city': {'data_type': 'text', 'notnull': 0}}}
     assert s.schema_equals(expected) == True
     conn.close()
 
